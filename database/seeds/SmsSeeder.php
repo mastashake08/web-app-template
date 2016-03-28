@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\SmsGateway;
+use App\SmsGateway as SMS;
 class SmsSeeder extends Seeder
 {
   public $gateways = [
@@ -21,8 +21,8 @@ class SmsSeeder extends Seeder
     public function run()
     {
         //
-        foreach($gateways as $gateway){
-          SmsSeeder::Create([
+        foreach($this->gateways as $gateway){
+          SMS::Create([
             'name' => $gateway['name'],
             'gateway' => $gateway['gateway'],
             ]);
