@@ -38,6 +38,31 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Phone and Carrier</label>
+
+                            <div class="col-md-6">
+
+
+                              <div class="row">
+                                <input type="tel" class="form-control" name="phone" value="{{ old('phone') }}">
+                              </div>
+                              <div class="row">
+
+                                <select name="sms_gateway">
+                                  @foreach(\App\SmsGateway::all()->sortBy('name') as $sms)
+                                  <option value="{{$sms->gateway}}">{{$sms->name}}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                                @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Password</label>
 
