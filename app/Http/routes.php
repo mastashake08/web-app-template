@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  $siteConfig = \App\SiteConfig::find(1);
+    return view('welcome')->with(['siteConfig' => $siteConfig]);
 });
 
 Route::group(['middleware' => 'web'], function () {
