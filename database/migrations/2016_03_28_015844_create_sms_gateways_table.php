@@ -14,7 +14,7 @@ class CreateSmsGatewaysTable extends Migration
     {
         Schema::create('sms_gateways', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('gateway');
             $table->timestamps();
         });
